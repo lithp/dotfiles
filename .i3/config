@@ -152,7 +152,12 @@ bar {
 
 # lock the screen
 bindsym $mod+p exec "i3lock -d --color=000000"
+bindsym $mod+x move workspace to output right
 exec 'gnome-sound-applet'
 exec 'nm-applet'
+exec 'tomboy'
+exec --no-startup-id 'setxkbmap -option ctrl:swapcaps'
 for_window [class="Tomboy"] floating enable
-
+for_window [class="Gnome-calculator"] floating enable
+#bindsym $mod+plus exec "pactl set-sink-volumne 1 -- +5%"
+#bindsym $mod+minus exec "pactl set-sink-volumne 1 -- -5%"
