@@ -147,6 +147,7 @@ exec 'tomboy'
 exec --no-startup-id 'dropbox start'
 exec --no-startup-id setxkbmap -option ctrl:swapcaps
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id 'gnome-settings-daemon'
 for_window [class="Tomboy"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 #bindsym $mod+plus exec "pactl set-sink-volumne 1 -- +5%"
