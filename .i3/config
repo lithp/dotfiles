@@ -137,18 +137,25 @@ bar {
         status_command i3status
 }
 
-
 # lock the screen
-bindsym $mod+p exec "i3lock -d --color=000000"
+bindsym $mod+p exec "i3lock -ti ~/wallpaper.png"
+bindsym $mod+c exec "gnome-calculator"
+bindsym $mod+o exec "gnome-terminal --working-directory=mixrank -x bin/ipython"
 bindsym $mod+x move workspace to output right
 exec 'gnome-sound-applet'
 exec 'nm-applet'
 exec 'tomboy'
+exec 'oneko -tora'
 exec --no-startup-id 'dropbox start'
 exec --no-startup-id setxkbmap -option ctrl:swapcaps
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id 'gnome-settings-daemon'
+# Find window properties by running xprop and clicking on the window you want to query
 for_window [class="Tomboy"] floating enable
 for_window [class="Gnome-calculator"] floating enable
+for_window [window_role="pop-up"] floating enable  # This was added for chrome's google hangouts
 #bindsym $mod+plus exec "pactl set-sink-volumne 1 -- +5%"
 #bindsym $mod+minus exec "pactl set-sink-volumne 1 -- -5%"
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
