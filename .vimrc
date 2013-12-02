@@ -79,6 +79,7 @@ nnoremap [unite]f :Unite -no-split -start-insert file_rec/async:!<CR>
 nnoremap [unite]r :Unite -no-split buffer file_mru<CR>
 nnoremap [unite]g :Unite -no-split grep:.<CR>
 nnoremap [unite]o :Unite -no-split outline<CR>
+nnoremap [unite]t :UniteResume<CR>
 
 let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -S -g ""'
 let g:unite_source_grep_command = 'ag'
