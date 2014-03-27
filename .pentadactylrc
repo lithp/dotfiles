@@ -1,0 +1,12 @@
+"hg7065
+
+loadplugins '\.(js|penta)$'
+group user
+command! pi :open javascript:q=location.href;p=document.title;void(t=open('https://pinboard.in/add?later=yes&noui=yes&jump=close&url='+encodeURIComponent(q)+'&title='+encodeURIComponent(p),'Pinboard','toolbar=no,width=100,height=100'));t.blur();
+command! pop :open javascript:q=location.href;if(document.getSelection){d=document.getSelection();}else{d='';};p=document.title;void(open('https://pinboard.in/add?showtags=yes&url='+encodeURIComponent(q)+'&description='+encodeURIComponent(d)+'&title='+encodeURIComponent(p),'Pinboard','toolbar=no,scrollbars=yes,width=750,height=700'));
+map -count -modes=n,v <F3> <count>:pi<Return>
+map -modes=n,v pi -ex :bmarks javascript:q=location.href;p=document.title;void(t=open(\'https://pinboard.in/add?later=yes&noui=yes&jump=close&url=\'+encodeURIComponent(q)+\'&title=\'+encodeURIComponent(p),\'Pinboard\',\'toolbar=no,width=100,height=100\'));t.blur();
+map -count -modes=n,v <F4> <count>:pop<Return>
+set complete=search,location,file,bookmark
+
+" vim: set ft=pentadactyl:
