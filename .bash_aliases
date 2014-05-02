@@ -11,3 +11,4 @@ alias lock='i3lock -ti ~/wallpaper.png'
 alias disk_space='du -h / 2>/dev/null | sort -rh | head -n $(expr `tput lines` - 1)'
 
 alias vim='vim -w ~/.vimlog "$@"'
+alias mkpy='cp ~/template.py $1'
