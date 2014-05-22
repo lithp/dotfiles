@@ -9,4 +9,6 @@ map -modes=n,v pi -ex :bmarks javascript:q=location.href;p=document.title;void(t
 map -count -modes=n,v <F4> <count>:pop<Return>
 set complete=search,location,file,bookmark
 
+set guioptions+=T
+
 " vim: set ft=pentadactyl:
