@@ -150,13 +150,20 @@ exec --no-startup-id 'dropbox start'
 exec --no-startup-id setxkbmap -option ctrl:swapcaps
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id 'gnome-settings-daemon'
+
 # Find window properties by running xprop and clicking on the window you want to query
 for_window [class="Tomboy"] floating enable
 for_window [class="Gnome-calculator"] floating enable
-for_window [window_role="pop-up"] floating enable  # chrome's google hangouts
-for_window [window_role="Preferences"] floating enable  # firefox's preferences
-#bindsym $mod+plus exec "pactl set-sink-volumne 1 -- +5%"
-#bindsym $mod+minus exec "pactl set-sink-volumne 1 -- -5%"
+for_window [class="Anki"] floating enable
+
+# chrome's google hangouts
+for_window [window_role="pop-up"] floating enable
+
+# firefox's preferences
+for_window [window_role="Preferences"] floating enable
+
+bindsym $mod+bracketright exec "pactl set-sink-volume 1 -- +5%"
+bindsym $mod+bracketleft exec "pactl set-sink-volume 1 -- -5%"
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
