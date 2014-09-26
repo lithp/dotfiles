@@ -153,8 +153,9 @@ exec --no-startup-id 'gnome-settings-daemon'
 
 # Find window properties by running xprop and clicking on the window you want to query
 for_window [class="Tomboy"] floating enable
-for_window [class="Gnome-calculator"] floating enable
+for_window [class="(?i)gcalctool"] floating enable
 for_window [class="Anki"] floating enable
+for_window [class="usb-creator-gtk"] floating enable
 
 # chrome's google hangouts
 for_window [window_role="pop-up"] floating enable
