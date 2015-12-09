@@ -7,7 +7,7 @@ if has("syntax")
     syntax enable
     set background=dark
     set t_Co=16
-    colorscheme solarized
+	" colorscheme solarized
 endif
 
 if has("mouse")
@@ -61,33 +61,43 @@ set cursorline
 let g:netrw_list_hide = '.*\.pyc$'
 " let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,.*\.pyc$'
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 Bundle 'gmarik/vundle'
-
 Bundle 'Shougo/vimproc.vim'
-
 Bundle 'rking/ag.vim'
-
+Bundle 'Shougo/neomru.vim'
 Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/unite-outline'
+" Bundle 'Shougo/unite-outline'
+
+" For git support
+Bundle 'tpope/vim-fugitive'
+
+" A fancier statusline
+Bundle 'bling/vim-airline' 
+
+" Bundle 'wakatime/vim-wakatime'
+
+call vundle#end()
+
 nmap <space> [unite]
 " Pro-tip, from the Unite window hit <C-l> to refresh the cache
 " Unite-f for files, Unite-r for recents, Unite-g for grep
 nnoremap [unite]f :Unite -no-split -start-insert file_rec/async:!<CR>
 nnoremap [unite]r :Unite -no-split buffer file_mru<CR>
 nnoremap [unite]g :Unite -no-split grep:.<CR>
-nnoremap [unite]o :Unite -no-split outline<CR>
+" nnoremap [unite]o :Unite -no-split outline<CR>
 nnoremap [unite]t :UniteResume<CR>
 
 let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -S -g ""'
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--line-numbers --nocolor --nogroup --hidden'
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#set_profile('source/file_rec/async', 'ignorecase', 1)
-call unite#set_profile('source/file_rec/async', 'smartcase', 1)
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#sorter_default#use(['sorter_rank'])
+" call unite#set_profile('source/file_rec/async', 'ignorecase', 1)
+" call unite#set_profile('source/file_rec/async', 'smartcase', 1)
 
 " Exit with ESC. You must never call :quit from within a unite buffer
 function! s:unite_settings()
@@ -97,10 +107,6 @@ function! s:unite_settings()
 endfunction
 autocmd FileType unite call s:unite_settings()
 
-" For git support
-Bundle 'tpope/vim-fugitive'
-
-" A fancier statusline
-Bundle 'bling/vim-airline'
-
-Bundle 'wakatime/vim-wakatime'
+set expandtab
+set tabstop=2
+set shiftwidth=2
