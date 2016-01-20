@@ -62,10 +62,12 @@ let g:netrw_list_hide = '.*\.pyc$'
 " let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,.*\.pyc$'
 
 
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Bundle 'gmarik/vundle'
+" cd ~/.vim/bundle/vimproc.vim/ && make
 Bundle 'Shougo/vimproc.vim'
 Bundle 'rking/ag.vim'
 Bundle 'Shougo/neomru.vim'
