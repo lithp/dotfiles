@@ -13,12 +13,12 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono 14
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -138,18 +138,18 @@ bar {
 }
 
 # lock the screen
-bindsym $mod+p exec "i3lock -ti ~/wallpaper.png"
+bindsym $mod+p exec "gnome-screensaver-command -l"
 bindsym $mod+c exec "gnome-calculator"
 bindsym $mod+o exec "gnome-terminal --working-directory=mixrank -x bin/ipython"
 bindsym $mod+x move workspace to output right
 exec 'gnome-sound-applet'
 exec 'nm-applet'
 exec 'tomboy'
-exec 'oneko -tora'
-exec --no-startup-id 'dropbox start'
-exec --no-startup-id setxkbmap -option ctrl:swapcaps
+# exec 'oneko -tora'
+# exec --no-startup-id 'dropbox start'
+# exec --no-startup-id setxkbmap -option ctrl:swapcaps
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id 'gnome-settings-daemon'
+exec --no-startup-id 'unity-settings-daemon'
 
 # Find window properties by running xprop and clicking on the window you want to query
 for_window [class="Tomboy"] floating enable
@@ -163,8 +163,18 @@ for_window [window_role="pop-up"] floating enable
 # firefox's preferences
 for_window [window_role="Preferences"] floating enable
 
-bindsym $mod+bracketright exec "pactl set-sink-volume 1 -- +5%"
-bindsym $mod+bracketleft exec "pactl set-sink-volume 1 -- -5%"
+bindsym $mod+bracketright exec "pactl -- set-sink-volume 1 +5%"
+bindsym $mod+bracketleft exec "pactl -- set-sink-volume 1 -5%"
+
+# TODO: http://unix.stackexchange.com/questions/45780/indicate-mute-unmute-with-i3status
+# or: pp-applet?
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+bindsym $mod+Left exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym $mod+Down exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym $mod+Up exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
