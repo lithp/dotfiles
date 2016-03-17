@@ -63,6 +63,7 @@ let g:netrw_list_hide = '.*\.pyc$'
 
 
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" Then start vim again and call :PluginInstall
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
