@@ -28,11 +28,6 @@ set number
 
 set colorcolumn=100
 
-set tabstop=4
-set shiftwidth=4
-set autoindent
-autocmd FileType python set expandtab
-set softtabstop=4
 
 setlocal spell spelllang=en_us
 set nospell
@@ -73,7 +68,8 @@ Bundle 'Shougo/vimproc.vim'
 Bundle 'rking/ag.vim'
 Bundle 'Shougo/neomru.vim'
 Bundle 'Shougo/unite.vim'
-" Bundle 'Shougo/unite-outline'
+Bundle 'Shougo/unite-outline'
+Bundle 'tsukkee/unite-tag'
 
 " For git support
 Bundle 'tpope/vim-fugitive'
@@ -91,14 +87,15 @@ nmap <space> [unite]
 nnoremap [unite]f :Unite -no-split -start-insert file_rec/async:!<CR>
 nnoremap [unite]r :Unite -no-split buffer file_mru<CR>
 nnoremap [unite]g :Unite -no-split grep:.<CR>
-" nnoremap [unite]o :Unite -no-split outline<CR>
-nnoremap [unite]t :UniteResume<CR>
+nnoremap [unite]o :Unite -no-split outline<CR>
+nnoremap [unite]t :Unite -no-split -start-insert tag<CR>
+nnoremap [unite]<space> :UniteResume<CR>
 
 let g:unite_source_rec_async_command = 'ag --nocolor --nogroup --hidden -S -g ""'
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--line-numbers --nocolor --nogroup --hidden'
-" call unite#filters#matcher_default#use(['matcher_fuzzy'])
-" call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 " call unite#set_profile('source/file_rec/async', 'ignorecase', 1)
 " call unite#set_profile('source/file_rec/async', 'smartcase', 1)
 
@@ -110,6 +107,17 @@ function! s:unite_settings()
 endfunction
 autocmd FileType unite call s:unite_settings()
 
-set expandtab
-set tabstop=2
-set shiftwidth=2
+autocmd FileType c set noexpandtab
+autocmd FileType c set tabstop=2
+autocmd FileType c set shiftwidth=2
+
+" Recursively searches for tags. First locally and then in the parent dir
+set tags=./tags;,tags
+" TOOD: Look into 'craigemery/vim-autotag' to auto-update the tag file
+" You'll have to play with it to make it work with your multi-project setup
+
+autocmd FileType python set tabstop=4
+autocmd FileType python set shiftwidth=4
+autocmd FileType python set autoindent
+autocmd FileType python set expandtab
+autocmd FileType python set softtabstop=4
