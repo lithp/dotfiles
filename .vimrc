@@ -26,8 +26,14 @@ set scrolloff=5
 
 set number
 
-set colorcolumn=100
-
+" Some alternatives here:
+" http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
+" http://stackoverflow.com/questions/2447109/showing-a-different-background-colour-in-vim
+" ColorColumn lets you highlight the background
+" Match lets you highlight just the chars which are over a given length
+let &colorcolumn=join(range(90,200),",")
+highlight ColorColumn ctermbg=Black
+set textwidth=90
 
 setlocal spell spelllang=en_us
 set nospell
@@ -108,8 +114,8 @@ endfunction
 autocmd FileType unite call s:unite_settings()
 
 autocmd FileType c set noexpandtab
-autocmd FileType c set tabstop=2
-autocmd FileType c set shiftwidth=2
+autocmd FileType c set tabstop=4
+autocmd FileType c set shiftwidth=4
 
 " Recursively searches for tags. First locally and then in the parent dir
 set tags=./tags;,tags
