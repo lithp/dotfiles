@@ -1,0 +1,15 @@
+[user]
+	email = github@briancloutier.com
+	name = Brian Cloutier
+[push]
+	default = simple
+[core]
+	editor = vim
+[alias]
+	co = checkout
+	rb = rebase
+	st = status
+	c = commit
+	cm = commit -m
+	br = branch
+	pu = "!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
