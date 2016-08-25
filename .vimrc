@@ -127,3 +127,5 @@ autocmd FileType python set shiftwidth=4
 autocmd FileType python set autoindent
 autocmd FileType python set expandtab
 autocmd FileType python set softtabstop=4
+
+autocmd FileType gitcommit setlocal spell
