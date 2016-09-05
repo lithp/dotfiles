@@ -5,3 +5,8 @@ git
 shutter
 
 ecryptfs-utils
+
+# for citus
+libz-dev
+libreadline-dev
+flex
