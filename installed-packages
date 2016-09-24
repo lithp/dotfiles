@@ -3,6 +3,9 @@ i3
 rofi
 git
 shutter
+htop
+exuberant-ctags
+pcmanfm
 
 ecryptfs-utils
 
