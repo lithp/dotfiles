@@ -83,7 +83,7 @@ Bundle 'tpope/vim-fugitive'
 " A fancier statusline
 Bundle 'bling/vim-airline' 
 
-" Bundle 'wakatime/vim-wakatime'
+Bundle 'wakatime/vim-wakatime'
 
 call vundle#end()
 
@@ -129,3 +129,4 @@ autocmd FileType python set expandtab
 autocmd FileType python set softtabstop=4
 
 autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit setlocal textwidth=72
