@@ -13,3 +13,8 @@
 	cm = commit -m
 	br = branch
 	pu = "!git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+[http]
+[merge]
+	ff = yes
+[pull]
+	ff = only
