@@ -1,5 +1,10 @@
 # vim: filetype=sh
 
+function gdb-select {
+  sudo gdb -p $(pgrep -a postgres | awk -F' ' '/SELECT/ {print $1}')
+}
+export -f gdb-select
+
 alias tmux='TERM=screen-256color-bce tmux'
 
 alias ussh='echo I hope you know what you are doing && ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
