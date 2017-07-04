@@ -1,9 +1,17 @@
 # vim: filetype=sh
 
 function gdb-select {
-  sudo gdb -p $(pgrep -a postgres | awk -F' ' '/SELECT/ {print $1}')
+  process=$(pgrep -a postgres | awk -F' ' '/SELECT/ {print $1}')
+  sudo gdb -p $process
 }
 export -f gdb-select
+
+function gdb-catch-error {
+  process=$(pgrep -a postgres | awk -F' ' '/SELECT/ {print $1}')
+  sudo gdb -p $process -ex 'break elog_finish if elevel == 20'\
+	   -ex 'break errstart if elevel == 20' -ex 'continue'
+}
+export -f gdb-catch-error
 
 alias tmux='TERM=screen-256color-bce tmux'
 
