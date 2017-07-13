@@ -5,6 +5,7 @@
 	default = simple
 [core]
 	editor = vim
+	excludesfile = ~/dotfiles/.gitignore
 [alias]
 	co = checkout
 	rb = rebase
