@@ -24,3 +24,7 @@ alias vim='vim -w ~/.vimlog "$@"'
 alias mkpy='cp ~/template.py $1'
 
 alias fuck='sudo $(history -p \!\!)'
+
+function gcl () {
+  grep --color=always "$@" | less -R
+}
