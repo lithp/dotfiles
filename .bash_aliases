@@ -28,3 +28,5 @@ alias fuck='sudo $(history -p \!\!)'
 function gcl () {
   grep --color=always "$@" | less -R
 }
+
+alias do-something-fancy="cat /dev/urandom | hexdump -C | grep 'ca fe'"
