@@ -1,0 +1,56 @@
+# vim:ft=muttrc
+# n.b. this uses the sidebar, which requires ubuntu's mutt-patched package
+
+# For future inspiration:
+# http://www.rosipov.com/blog/elegant-mutt-setup-for-use-with-gmail/
+# http://stevelosh.com/blog/2012/10/the-homely-mutt/
+# https://github.com/ulfalizer/Configuration-files/blob/master/mutt
+# https://vigasdeep.com/2014/05/07/install-config-mutt-sidebar/
+# https://github.com/hugoroy/.mutt/blob/master/muttrc
+# https://pbrisbin.com/posts/mutt_gmail_offlineimap/
+# https://wiki.archlinux.org/index.php/Mutt
+# http://wcm1.web.rice.edu/mutt-tips.html
+
+source ~/.mutt/auth
+
+set ssl_starttls = yes
+set ssl_force_tls = yes
+set folder = imaps://imap.gmail.com/
+set spoolfile = imaps://imap.gmail.com/INBOX
+set header_cache = '~/.mutt/cache/headers'
+set message_cachedir = '~/.mutt/cache/bodies'
+set certificate_file = "~/.mutt/certificates"
+
+set mbox = "+[Gmail]/All Mail"
+set postponed = '+[Gmail]/Drafts"
+
+set editor = 'vim'
+
+set help = 'no' # remove the top-bar. wish I could customize it instead
+
+set sort = threads
+set sort_aux = last-date-received
+
+# weather mutt will move read messages from $spool to $mbox
+# essentially, auto-archives read messages
+set move = no
+unset record  # the place a copy of outgoing messages is saved, gmail does this already
+
+# some background: https://dev.mutt.org/trac/wiki/UseCases/Gmail
+bind editor <space> noop # Allow folders with spaces in their names
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index gt "<change-folder>=Trash<enter>" "Go to trash"
+macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"
+
+# the list of mailboxes shown in the sidebar
+mailboxes +INBOX "+[Gmail]/Sent Mail" +[Gmail]/Drafts +[Gmail]/Trash +cloud +docs
+
+# \Cj is <enter>, you can't separate them
+# https://dev.mutt.org/trac/ticket/3494#comment:2
+bind index,pager J sidebar-next
+bind index,pager K sidebar-prev
+bind index,pager O sidebar-open
+
+bind index <return> display-message
+bind index gg first-entry
+bind index G last-entry
