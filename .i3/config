@@ -163,6 +163,7 @@ for_window [class="(?i)gcalctool"] floating enable
 for_window [class="Anki"] floating enable
 for_window [class="usb-creator-gtk"] floating enable
 for_window [class="Electrum"] floating enable
+for_window [class="electrum"] floating enable
 
 # scanning those qr codes
 for_window [class="zbar"] floating enable
