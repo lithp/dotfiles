@@ -130,14 +130,18 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# if no bar appears you might need to configure a primary
+# xrandr --output <output> --primary
 bar {
-        status_command i3blocks
-
-        # if no tray appears you might need to configure a primary
-        # xrandr --output <output> --primary
+	output eDP1
         tray_output primary
+        status_command BEEMIND_WIDTH=2 i3blocks
+}
+
+bar {
+	output DP1
+        tray_output primary
+        status_command BEEMIND_WIDTH=5 i3blocks
 }
 
 # lock the screen
