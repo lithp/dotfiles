@@ -158,12 +158,19 @@ for_window [class="Tomboy"] floating enable
 for_window [class="(?i)gcalctool"] floating enable
 for_window [class="Anki"] floating enable
 for_window [class="usb-creator-gtk"] floating enable
+for_window [class="Electrum"] floating enable
+
+# scanning those qr codes
+for_window [class="zbar"] floating enable
 
 # chrome's google hangouts
 for_window [window_role="pop-up"] floating enable
 
 # firefox's preferences
 for_window [window_role="Preferences"] floating enable
+
+# chrome's hardware wallet popup
+for_window [window_role="app"] floating enable
 
 bindsym $mod+bracketright exec "pactl -- set-sink-volume 1 +5%"
 bindsym $mod+bracketleft exec "pactl -- set-sink-volume 1 -5%"
