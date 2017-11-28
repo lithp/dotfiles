@@ -134,6 +134,10 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3blocks
+
+        # if no tray appears you might need to configure a primary
+        # xrandr --output <output> --primary
+        tray_output primary
 }
 
 # lock the screen
