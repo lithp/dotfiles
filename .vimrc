@@ -31,7 +31,7 @@ set number
 " http://stackoverflow.com/questions/2447109/showing-a-different-background-colour-in-vim
 " ColorColumn lets you highlight the background
 " Match lets you highlight just the chars which are over a given length
-let &colorcolumn=join(range(90,200),",")
+let &colorcolumn=join(range(91,200),",")
 highlight ColorColumn ctermbg=Black
 set textwidth=90
 
